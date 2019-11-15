@@ -27,13 +27,14 @@ script:
 
 deploy:
   provider: releases
-  api_key:
-    secure: p/ZgGwT2O4Chrdim35KkfgJt4OqGCa/yGuozhUgcoEm4oclXXm6/qrwIl60zHWWmOjZp0LS3fMS8jU3p9HLTrliRSFl4MBhjZPQT9VkSyfYc1/hgxGh/96sVgp9d9IdO3N6RWSmiCX5+GF3zcAEYCQcGvkMOKMe4g7eLCfDQLgac0rQctkHjkUQCtiK2x75zdMjH2TPU7Pdu2QFtvwtzQGPdeJHKCDMH4rYmZBEoIPmiYNJ89QDqWFbKoB4KMQT938OGRuAFbBW1pT/qqdZZH07JWk9JZZLkakG42nMt+EBOXN4DRDrTg7n2QMLCDo8Y+nwPBKHWO5sk5SstOhGco6XL3Fuj7OAzxQQnSSasuN/n0MwZZT/J9Yz1OQnWr2NUDeZ9SfNQ5v5bVRPW/nBi8PQThO9j95GgHF9EZ3CR3kc37zcdjxQKsFurpDy0AMw/xu0+QuCDj1QS/33oNOpIlvh3RWW5LUeup9YfK8sj6v7MgiXxg/8UhFJdPDPTxEnEAV9i8nGMwC+UE03dJ+R5nHao7ni8pYd57lD2CGX1YsORpl41xB2dgmghyU26brsshjSYbprbdViNXZ24pMB+NVFw+kGPCSbAUaAzh/WKtHi/ivqVVTAJyeApzqS343HCCNKPQUcoFzXeoY+2ZASCA6qGuTFZ62FIZfSj6vRQrtw=
+  # ⋮
+  edge: true
+  api_key: $GITHUB_TOKEN
   file_glob: true
   file:
-    - ./target/release/**/*.dll
+    - ./target/release/**/libui.dll
     - ./target/release/**/simple-menu.exe
-    - ./target/release/**/*.so
+    - ./target/release/**/libui.so
     - ./target/release/**/simple-menu
   skip_cleanup: true
   on:
