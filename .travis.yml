@@ -27,7 +27,8 @@ script:
 
 deploy:
   provider: releases
-  token: $API_KEY_ENCRYPTED
+  api_key:
+    secure: $API_KEY_ENCRYPTED
   file_glob: true
   file:
     - ./target/release/**/*.dll
