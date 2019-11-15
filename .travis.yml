@@ -16,10 +16,11 @@ addons:
       - cmake
       - libgtk-3-dev
       - p7zip-full
+      - zsh
   homebrew:
     packages:
     - p7zip
-
+    - zsh
 install:
   - rustup component add rustfmt
   - rustfmt -V
@@ -28,11 +29,9 @@ script:
   - cargo fmt --all -- --check
   - cargo test
   - cargo build --release
-  - mkdir out
-  - cp ./target/release/**/libui.dll ./target/release/**/libui.so ./out/
-  - cp ./target/release/**/simple-menu.exe ./target/release/**/simple-menu ./out/
-  - cd out
-  - 7z a -t7z -m0=lzma -ms=on ../$TRAVIS_OS_NAME.7z *
+  - cd ./target/release/
+  - 7z a -t7z -m0=lzma -ms=on ../../$TRAVIS_OS_NAME.7z *
+  - cd ..
   - cd ..
 deploy:
   provider: releases
@@ -40,7 +39,7 @@ deploy:
   edge: true
   api_key: $GITHUB_TOKEN
   file_glob: true
-  file: $TRAVIS_OS_NAME.7z
+  file: - $TRAVIS_OS_NAME.7z
   skip_cleanup: true
   on:
     tags: true
