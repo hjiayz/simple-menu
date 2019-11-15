@@ -39,7 +39,7 @@ deploy:
   edge: true
   api_key: $GITHUB_TOKEN
   file_glob: true
-  file: - $TRAVIS_OS_NAME.7z
+  file: $TRAVIS_OS_NAME.7z
   skip_cleanup: true
   on:
     tags: true
