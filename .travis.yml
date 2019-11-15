@@ -24,18 +24,21 @@ script:
   - cargo fmt --all -- --check
   - cargo test
   - cargo build --release
-
+  - mkdir out
+  - cp ./target/release/**/libui.dll ./out/
+  - cp ./target/release/**/simple-menu.exe ./out/
+  - cp ./target/release/**/libui.so ./out/
+  - cp ./target/release/**/simple-menu ./out/
+  - cd out
+  - 7z a -t7z -m0=lzma -ms=on ../$TRAVIS_OS_NAME.7z *
+  - cd ..
 deploy:
   provider: releases
   # ⋮
   edge: true
   api_key: $GITHUB_TOKEN
   file_glob: true
-  file:
-    - ./target/release/**/libui.dll
-    - ./target/release/**/simple-menu.exe
-    - ./target/release/**/libui.so
-    - ./target/release/**/simple-menu
+  file: $TRAVIS_OS_NAME.7z
   skip_cleanup: true
   on:
     tags: true
