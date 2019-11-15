@@ -27,13 +27,13 @@ script:
 
 deploy:
   provider: releases
-  api_key: $API_KEY_ENCRYPTED
+  token: $API_KEY_ENCRYPTED
   file_glob: true
   file:
-    - target/**/*.dll
-    - target/**/simple-menu.exe
-    - target/**/*.so
-    - target/**/simple-menu
+    - ./target/release/**/*.dll
+    - ./target/release/**/simple-menu.exe
+    - ./target/release/**/*.so
+    - ./target/release/**/simple-menu
   skip_cleanup: true
   on:
     tags: true
