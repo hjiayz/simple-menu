@@ -7,3 +7,4 @@ license = "GPL-3.0"
 
 [dependencies]
 iui = "0.3.0"
+toml = "0.5.5"
