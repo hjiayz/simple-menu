@@ -7,7 +7,7 @@ use std::process::Command;
 
 fn get_cfg_dir() -> Option<String> {
     use ::std::env::var;
-    let vername = if cfg!(windows) { "HOMEPATH" } else { "HOME" };
+    let vername = if cfg!(windows) { "USERPROFILE" } else { "HOME" };
     #[cfg(windows)]
     let result = format!("{}\\.smenu", var(vername).ok()?);
     #[cfg(not(windows))]
